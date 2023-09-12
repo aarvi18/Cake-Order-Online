@@ -1,5 +1,5 @@
 // This file is in es6 form
-import  express  from 'express';
+import express from 'express';
 import colors from 'colors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
@@ -22,12 +22,12 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 8080;
 
 //routes
-app.use('/api/v1/auth',authRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 // Define a route
 app.get('/', (req, res) => {
   // res.send(htmlContent);
-  res.send('<h1>Hello, Express!</h1>');
+  res.send('<h1>Hello, eCommerce website is live!!</h1>');
 });
 
 // Start the server
