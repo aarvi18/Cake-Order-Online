@@ -8,19 +8,19 @@ export const registerController = async (req, res) => {
 
         //validations
         if (!name) {
-            return res.send({ error: 'Name is Required' })
+            return res.send({ message: 'Name is Required' })
         }
         if (!password) {
-            return res.send({ error: 'Password is Required' })
+            return res.send({ message: 'Password is Required' })
         }
         if (!email) {
-            return res.send({ error: 'Email is Required' })
+            return res.send({ message: 'Email is Required' })
         }
         if (!phone) {
-            return res.send({ error: 'Phone No. is Required' })
+            return res.send({ message: 'Phone No. is Required' })
         }
         if (!address) {
-            return res.send({ error: 'Address is Required' })
+            return res.send({ message: 'Address is Required' })
         }
 
         // check users
@@ -29,7 +29,7 @@ export const registerController = async (req, res) => {
         //existing user
         if (exisitingUser) {
             return rex.status(200).send({
-                success: true,
+                success: false,
                 message: 'Already Register please login',
             })
         }
@@ -112,4 +112,9 @@ export const loginController = async (req, res) => {
             error
         })
     }
+};
+
+//test controller
+export const testController = (req,res) => {
+    console.log('Protected Route')
 }

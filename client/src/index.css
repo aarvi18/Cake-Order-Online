@@ -22,3 +22,30 @@ body {
   --secondary-color: rgba(0, 174, 255, 0.822);
   --pane-padding: 5px 42px;
 }
+
+
+.btn1 {
+  background-color: var(--primary-color);
+  padding: 10px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s all ease-in-out;
+  
+}
+.btn1:hover {
+  background-color: rgba(0, 174, 255, 0.822);
+}
+
+.btn2 {
+  border: 2px solid var(--primary-color);
+  padding: 10px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--white);
+  transition: 0.2s all ease-in-out;
+}
+
+.btn2:hover {
+  border-color: rgba(0, 174, 255, 0.822);
+}
