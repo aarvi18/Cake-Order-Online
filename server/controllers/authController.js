@@ -1,5 +1,6 @@
 import userModel from "../models/userModel.js";
 import { comparePassword, hashPassword } from "../helpers/authHelper.js";
+import JWT from "jsonwebtoken";
 
 export const registerController = async (req, res) => {
 
@@ -8,19 +9,19 @@ export const registerController = async (req, res) => {
 
         //validations
         if (!name) {
-            return res.send({ message: 'Name is Required' })
+            return res.send({ message: 'Name is Required' });
         }
         if (!password) {
-            return res.send({ message: 'Password is Required' })
+            return res.send({ message: 'Password is Required' });
         }
         if (!email) {
-            return res.send({ message: 'Email is Required' })
+            return res.send({ message: 'Email is Required' });
         }
         if (!phone) {
-            return res.send({ message: 'Phone No. is Required' })
+            return res.send({ message: 'Phone No. is Required' });
         }
         if (!address) {
-            return res.send({ message: 'Address is Required' })
+            return res.send({ message: 'Address is Required' });
         }
 
         // check users
@@ -30,8 +31,8 @@ export const registerController = async (req, res) => {
         if (exisitingUser) {
             return rex.status(200).send({
                 success: false,
-                message: 'Already Register please login',
-            })
+                message: "Already Register please login",
+            });
         }
 
         //register user
@@ -44,12 +45,12 @@ export const registerController = async (req, res) => {
             phone,
             address,
             password: hashedPassword
-        }).save()
+        }).save();
 
         res.status(201).send({
             success: true,
-            message: 'User Register Succesfully',
-            user
+            message: "User Register Succesfully",
+            user,
         });
 
 
@@ -57,8 +58,8 @@ export const registerController = async (req, res) => {
         console.log(error)
         res.status(500).send({
             seccess: false,
-            message: 'Error in Registration',
-            error
+            message: "Error in Registration",
+            error,
         })
     }
 };
@@ -67,11 +68,12 @@ export const loginController = async (req, res) => {
     try {
         const { email, password } = req.body
 
+        //Validation
         if (!email || !password) {
             return res.status(404).send({
                 success: false,
-                message: 'Invalid Email or Password'
-            })
+                message: "Invalid Email or Password",
+            });
         }
 
         // check user
@@ -79,28 +81,31 @@ export const loginController = async (req, res) => {
         if (!user) {
             return res.status(404).send({
                 success: false,
-                message: 'Email is not registerd'
+                message: "Email is not registerd",
             })
         }
         const match = await comparePassword(password, user.password)
         if (!match) {
             return res.status(200).send({
                 success: false,
-                message: 'Invalid Password'
-            })
+                message: "Invalid Password",
+            });
         }
 
-        const token = await JsonWebTokenError.sign({ _id: user._id }, process.env.JWT_SECRET, {
+
+
+        const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
             expiresIn: "7d",
         });
         res.status(200).send({
             success: true,
-            message: 'Login Successfully',
+            message: "Login Successfully",
             user: {
-                mame: user.name,
+                _id: user._id,
+                name: user.name,
                 email: user.email,
                 phone: user.phone,
-                address: user.address,
+                adddress: user.address,
             },
             token,
         });
@@ -109,12 +114,17 @@ export const loginController = async (req, res) => {
         res.status(500).send({
             seccess: false,
             message: 'Error in Login',
-            error
-        })
+            error,
+        });
     }
 };
 
 //test controller
-export const testController = (req,res) => {
-    console.log('Protected Route')
+export const testController = (req, res) => {
+    try {
+        res.send("Protected Routes");
+    } catch (error) {
+        console.log(error);
+        res.send({ error });
+    }
 }

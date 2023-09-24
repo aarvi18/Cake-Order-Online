@@ -1,29 +1,46 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layouts/Layout'
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 import '../styles/LoginPage.css'
 
 const LoginPage = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-    };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Implement login logic here
-        console.log('Login data:', formData);
+        try {
+
+            const res = await axios.post("/api/v1/auth/login", {
+                email,
+                password,
+
+            });
+
+            if (res && res.data.success) {
+                navigate('/');
+                toast.success(res.data && res.data.message);
+                    
+            } else {
+                toast.error(res.data.message)
+            }
+
+        } catch (error) {
+            console.log(error)
+            toast.error('Oops!! Somthing went wrong', { duration: 8000, })
+        }
     };
+
     return (
         <Layout>
-             <div className="login-container">
+            <div className="login-container">
                 <div className="login-card">
                     <h2>Welcome Back!</h2>
                     <form className="login-form" onSubmit={handleSubmit}>
@@ -31,16 +48,17 @@ const LoginPage = () => {
                             type="email"
                             name="email"
                             placeholder="Email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            autoComplete='off'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                         <input
                             type="password"
                             name="password"
                             placeholder="Password"
-                            value={formData.password}
-                            onChange={handleInputChange}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
                         <button type="submit" className='btn1'>Login</button>
                     </form>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layouts/Layout'
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import axios from 'axios';
 
 import '../styles/SignupPage.css'
@@ -30,16 +30,18 @@ const SignupPage = () => {
                 { name, email, password, phone, address }
             );
 
-            if (res.data.success) {
-                toast.success(res.data.message)
+            if (res && res.data.success) {
                 navigate('/login');
+                toast.success('Registration Success!!',{
+                    duration: 12000,
+                });
             } else {
                 toast.error(res.data.message)
             }
 
         } catch (error) {
             console.log(error)
-            toast.error('Somthing went wrong')
+            toast.error('Oops!! Somthing went wrong',{duration: 8000,})
         }
     };
     // console.log(process.env.REACT_APP_API);
