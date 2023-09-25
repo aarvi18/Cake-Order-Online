@@ -26,6 +26,8 @@
 .login-btn {
     margin-right: 15px;
     letter-spacing: 0.5px;
+    text-decoration: none;
+    color: black;
 }
 
 .cart {
@@ -36,6 +38,7 @@
 
 .cart .cart-icon {
     font-size: 1.4rem;
+    color: black;
     margin-right: 5px;
     transform: scaleX(-1);
 }

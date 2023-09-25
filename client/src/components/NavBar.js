@@ -6,7 +6,11 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 // import Searchbar from './Assets/Searchbar';
 import Login from './Assets/LoginBtn';
+import Logout from './Assets/LogOutBtn';
 import '../styles/NavBar.css'
+import '../styles/Header.css'
+
+import { useAuth } from '../context/auth';
 
 import Logo from '../images/logo.png'
 
@@ -14,7 +18,8 @@ import Logo from '../images/logo.png'
 const Navbar = () => {
 
     const [cartItems, setCartItems] = useState(0); // Initialize cart items
-
+    const [auth, setAuth] = useAuth();
+    
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -29,7 +34,10 @@ const Navbar = () => {
 
                 <div className="cart">
 
-                    < Login />
+                    {
+                        !auth.user ? (<Login />) : (<Logout />)
+                    }
+
 
                     <Link to='/Cart'> <span className="cart-icon"><FontAwesomeIcon icon={faCartShopping} className='fontawesomeicon' /></span> </Link>
                     <span className="cart-count">{cartItems}</span>
