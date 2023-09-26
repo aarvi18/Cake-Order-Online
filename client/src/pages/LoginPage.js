@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../components/Layouts/Layout'
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -16,6 +16,7 @@ const LoginPage = () => {
     const [auth ,setAuth] = useAuth();
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +36,7 @@ const LoginPage = () => {
                     token:res.data.token,
                 });
                 localStorage.setItem('auth',JSON.stringify(res.data));
-                navigate('/');
+                navigate(location.state || '/');
                     
             } else {
                 toast.error(res.data.message)

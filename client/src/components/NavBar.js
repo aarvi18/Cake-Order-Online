@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const [cartItems, setCartItems] = useState(0); // Initialize cart items
     const [auth, setAuth] = useAuth();
-    
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -31,6 +31,8 @@ const Navbar = () => {
                 {/* <div className='search-bar'>
                     < Searchbar />
                 </div> */}
+
+                <Link to='/dashboard'>Dashboard</Link>
 
                 <div className="cart">
 
