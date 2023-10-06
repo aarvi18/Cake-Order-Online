@@ -8,6 +8,7 @@ import CartPage from './pages/CartPage';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './user/Dashboard';
 import PrivateRoute from './components/Routes/Private';
+import ForgotPasswordPage from './pages/ForgotPassword';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="" element={<Dashboard />} />
         </Route>
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/forgotpass' element={<ForgotPasswordPage />} />
         <Route path='/signuppage' element={<SignupPage />} />
         <Route path='/cart' element={<CartPage />} />
         {/* <Route path='/signup' element={<SignUpPage />} /> */}

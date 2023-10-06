@@ -14,6 +14,7 @@ const SignupPage = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [answer, setAnswer] = useState("");
     const navigate = useNavigate();
 
 
@@ -27,7 +28,7 @@ const SignupPage = () => {
         try {
 
             const res = await axios.post('/api/v1/auth/register',
-                { name, email, password, phone, address }
+                { name, email, password, phone, address, answer, }
             );
 
             if (res && res.data.success) {
@@ -76,13 +77,6 @@ const SignupPage = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        {/* <input
-                            type="password"
-                            name="confirmPassword"
-                            placeholder="Confirm Password"
-                            value={formData.confirmPassword}
-                            onChange={handleInputChange}
-                        /> */}
                         <input
                             type="text"
                             name="phone"
@@ -97,6 +91,14 @@ const SignupPage = () => {
                             placeholder="Address"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                         <input
+                            type="text"
+                            name="Answer"
+                            placeholder="Your fav colour"
+                            value={answer}
+                            onChange={(e) => setAnswer(e.target.value)}
                             required
                         />
                         <button className='btn1' type="submit">Sign Up</button>
