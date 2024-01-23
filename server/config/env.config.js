@@ -1,0 +1,43 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+const {
+  PORT,
+  DB_URL,
+  JWT_SECRET_AUTH,
+  JWT_EXPIRY,
+  MAIL_HOST,
+  MAIL_PORT,
+  MAIL_USERNAME,
+  MAIL_PASSWORD,
+  MAIL_EMAIL,
+  EMAIL_VERIFY_TOKEN_SECRET_KEY,
+  DOMAIN_URL,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECTET,
+  RAZORPAY_KEY_ID,
+  RAZORPAY_KEY_SECRET,
+} = process.env;
+
+const envConfig = {
+  PORT: PORT || 8000,
+  DB_URL: DB_URL || "mongodb+srv://rakeshcse123:1fa7vygxBS8y9dYq@cluster0.oukhnxc.mongodb.net/",
+  JWT_SECRET_AUTH,
+  JWT_EXPIRY,
+  // Mail creadential
+  MAIL_HOST,
+  MAIL_PORT,
+  MAIL_USERNAME,
+  MAIL_PASSWORD,
+  MAIL_EMAIL,
+  EMAIL_VERIFY_TOKEN_SECRET_KEY,
+  DOMAIN_URL,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECTET,
+  RAZORPAY_KEY_ID,
+  RAZORPAY_KEY_SECRET,
+};
+
+export default envConfig;

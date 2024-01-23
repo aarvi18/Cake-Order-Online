@@ -1,51 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+#image-carousel::-webkit-scrollbar {
+  width: 0px;
 }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* root file for create varibles */
-:root {
-  --black: rgb(0, 0, 0);
-  --white: rgb(255, 255, 255);
-  --main-color: #fde7e170;
-  --primary-color: #b7d7d4;
-  --secondary-color: rgba(0, 174, 255, 0.822);
-  --pane-padding: 5px 42px;
-}
-
-
-.btn1 {
-  background-color: var(--primary-color);
-  padding: 10px 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: none;
-  transition: 0.2s all ease-in-out;
-  
-}
-.btn1:hover {
-  background-color: rgba(0, 174, 255, 0.822);
-}
-
-.btn2 {
-  border: 2px solid var(--primary-color);
-  padding: 10px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: var(--white);
-  transition: 0.2s all ease-in-out;
-}
-
-.btn2:hover {
-  border-color: rgba(0, 174, 255, 0.822);
+.image-gallery-icon {
+  display: none;
 }
