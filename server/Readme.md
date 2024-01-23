@@ -4,10 +4,6 @@
 
 > #### This is a fully-functional online cake ordering website, built using the MERN stack. The frontend of the website was developed using React JS, Redux, Chakra-ui, Chart JS, and Image-crop. The backend was built using Node JS, Express JS, Cloudinary, Razorpay, and JWT authentication.
 
-![Image-1](https://github.com/deepakduttaOfficial/asstes/blob/master/onlineCakeOrder-Preview_images/online_cake_order_image1.netlify.app.png?raw=true)
-![Image-1](https://github.com/deepakduttaOfficial/asstes/blob/master/onlineCakeOrder-Preview_images/online_cake_order_image2.netlify.app.png?raw=true)
-![Image-1](https://github.com/deepakduttaOfficial/asstes/blob/master/onlineCakeOrder-Preview_images/online_cake_order_image3.netlify.app.png?raw=true)
-
 # Functionalities
 
 ### Normal User
