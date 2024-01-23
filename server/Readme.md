@@ -1,8 +1,5 @@
 # Online Cake Ordering Website (Backend)
 
-- Deploy link - [Online Cake Order](https://online-cake-order.netlify.app/)
-- Frontend Source Code - [Code](https://github.com/deepakduttaOfficial/cake-order-frontend)
-
 ## About this project
 
 > #### This is a fully-functional online cake ordering website, built using the MERN stack. The frontend of the website was developed using React JS, Redux, Chakra-ui, Chart JS, and Image-crop. The backend was built using Node JS, Express JS, Cloudinary, Razorpay, and JWT authentication.
